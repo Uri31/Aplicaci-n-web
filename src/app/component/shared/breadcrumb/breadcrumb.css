@@ -1,0 +1,43 @@
+/* Estilos para el contenedor del breadcrumb */
+.breadcrumb {
+  margin: 0 0 1.5rem 0;
+  /* Add bottom margin */
+  font-size: 0.9rem;
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Estilos para los enlaces dentro del breadcrumb */
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+  text-decoration: none;
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  margin: -0.1rem -0.4rem;
+}
+
+/* Estilos para el separador (/) */
+.separator {
+  margin: 0 0.5rem;
+  color: #d1d5db;
+  /* Gray 300 */
+}
+
+/* Estilos para el elemento actual (última miga) */
+.current {
+  font-weight: 600;
+  color: var(--primary);
+}

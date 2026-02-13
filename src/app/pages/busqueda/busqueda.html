@@ -1,0 +1,67 @@
+<div class="fade-in">
+  <h2 class="section-title">Búsqueda Avanzada</h2>
+
+  <div class="row">
+    <!-- Panel de filtros -->
+    <div class="col-md-4 mb-4">
+      <div class="modern-card">
+        <h3>Filtros</h3>
+        <div class="mb-3">
+          <label class="form-label fw-bold">Palabra clave</label>
+          <div class="input-group">
+            <input class="form-control" placeholder="Buscar..." [(ngModel)]="query" (keyup.enter)="doSearch()" />
+            <button class="btn btn-primary" (click)="doSearch()">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+          <button class="btn btn-sm btn-link text-muted mt-2 ps-0" (click)="clear()">
+            Limpiar filtros
+          </button>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Tipo</label>
+          <select class="form-select" [(ngModel)]="filters.type" (change)="doSearch()">
+            <option value="todos">Todos</option>
+            <option value="pagina">Página</option>
+            <option value="seccion">Sección</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Sección</label>
+          <select class="form-select" [(ngModel)]="filters.section" (change)="doSearch()">
+            <option value="todas">Todas</option>
+            <option *ngFor="let s of sections" [value]="s">{{ s }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="col-md-8">
+      <div class="modern-card h-100">
+        <h3>Resultados</h3>
+
+        <ng-container *ngIf="results$ | async as results">
+          <div *ngIf="results.length === 0" class="alert alert-light text-center">
+            <i class="bi bi-info-circle text-primary fs-3 d-block mb-2"></i>
+            No se encontraron resultados para tu búsqueda.
+          </div>
+
+          <div *ngIf="results.length > 0" class="search-results">
+            <a *ngFor="let item of results" [routerLink]="item.path" class="result-item">
+              <div>
+                <div class="result-title">{{ item.title }}</div>
+                <div class="result-desc">{{ item.description }}</div>
+              </div>
+              <span class="result-badge">
+                {{ item.section }}
+              </span>
+            </a>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

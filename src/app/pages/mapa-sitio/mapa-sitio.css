@@ -1,0 +1,78 @@
+.sitemap-tree {
+    list-style: none;
+    padding-left: 0;
+    margin: 2rem 0;
+}
+
+.sitemap-item {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.sitemap-item::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 15px;
+    height: 2px;
+    background: var(--primary);
+}
+
+.sitemap-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.sitemap-item:last-child::after {
+    height: 14px;
+}
+
+.sitemap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-main);
+    font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+}
+
+.sitemap-link:hover {
+    transform: translateX(5px);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.sitemap-icon {
+    color: var(--primary);
+    opacity: 0.7;
+}
+
+/* Root item specific styles */
+.root-item>.sitemap-link {
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    border: none;
+}
+
+.root-item>.sitemap-link .sitemap-icon {
+    color: white;
+    opacity: 1;
+}
+
+.root-item::before,
+.root-item::after {
+    display: none;
+}
